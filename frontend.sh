@@ -1,5 +1,5 @@
 echo =====================================
-echo disabling in nginx
+echo -e \\e[31mdisabling in nginx
 echo =====================================
 dnf module disable nginx -y
 
