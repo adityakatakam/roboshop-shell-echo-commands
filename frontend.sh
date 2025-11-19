@@ -1,42 +1,42 @@
-echo=====================================
+echo =====================================
 echo disabling in nginx
-echo=====================================
+echo =====================================
 dnf module disable nginx -y
 
-echo=====================================
+echo =====================================
 echo enabling nginx 20
-echo=====================================
+echo =====================================
 dnf module enable nginx:1.24 -y
 
-echo=====================================
+echo =====================================
 echo installing nginx
-echo=====================================
+echo =====================================
 dnf install nginx -y
 
-echo=====================================
+echo =====================================
 echo copying the conf file
-echo=====================================
+echo =====================================
 cp nginx.conf /etc/nginx/nginx.conf
 
-echo========================================
+echo ========================================
 echo removing the default content of the web
-echo========================================
+echo ========================================
 rm -rf /usr/share/nginx/html/*
 
-echo=============================
+echo =============================
 echo downloading the app content
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
-echo=============================
+echo =============================
 
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 
-echo===========================
+echo ===========================
 echo enabling the nginx service
-echo===========================
+echo ===========================
 systemctl enable nginx
 
-echo===========================
+echo ===========================
 echo restart the nginx server
-echo===========================
+echo ===========================
 systemctl restart nginx
